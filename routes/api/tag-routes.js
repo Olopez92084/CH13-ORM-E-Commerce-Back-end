@@ -6,15 +6,10 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Product,
-        attributes: [
-          "id",
-          "product_name",
-          "product_price",
-          "product_stock",
-          "category_id",
-        ],
+        through: ProductTag,
+        as: "products", 
       },
-    ],
+      ],
   })
     .then((dbTagData) => res.json(dbTagData))
     .catch((err) => {
@@ -28,17 +23,11 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "tag_name"],
     include: [
       {
         model: Product,
-        attributes: [
-          "id",
-          "product_name",
-          "product_price",
-          "product_stock",
-          "category_id",
-        ],
+        through: ProductTag,
+        as: "products",
       },
     ],
   })
@@ -67,7 +56,10 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  Tag.update(req.body, {
+  Tag.update(
+    {
+      tag_name: req.body.tag_name, },
+      {
     where: { id: req.params.id },
   })
     .then((dbTagData) => {
@@ -87,12 +79,12 @@ router.delete("/:id", (req, res) => {
   Tag.destroy({
     where: { id: req.params.id },
   })
-    .then((dbTag) => {
-      if (!dbTag) {
+    .then((dbTagData) => {
+      if (!dbTagData) {
         res.status(404).json({ message: "No Tag with this ID found" });
         return;
       }
-      res.json(dbtag);
+      res.json(dbTagData);
     })
     .catch((err) => {
       console.log(err);
