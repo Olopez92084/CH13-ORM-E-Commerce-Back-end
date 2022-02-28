@@ -3,6 +3,8 @@
 # Description
 
 This is the backend of an Ecommerce site. This code utilizes Express.js and Sequelize to interact with a MySQL Database.
+Contains API GET routes for categories, products, and tags. It can display in JSON using Insomnia. While testing 
+API POST, PUT, and DELETE routes in Insomnia, users can also create, update, and delete the data in the database.
 
 # Instructions
 
