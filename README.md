@@ -19,7 +19,7 @@ API POST, PUT, and DELETE routes in Insomnia, users can also create, update, and
 
 # Quick Demo of how to start the application : 
 
-https://studio.youtube.com/video/vOId28GwuEg/edit![tags]
+https://youtu.be/vOId28GwuEg
 
 # Screenshots
 ![post](https://user-images.githubusercontent.com/94086814/155927498-45a62c68-39dd-450d-9555-b7afb9863e30.jpg)
